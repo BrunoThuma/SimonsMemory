@@ -7,20 +7,24 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5E848BD22AC9CD6C00E04672 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E848BD12AC9CD6C00E04672 /* Card.swift */; };
+		5E848BD42AC9D9D600E04672 /* SFSymbols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E848BD32AC9D9D600E04672 /* SFSymbols.swift */; };
+		5E848BD62AC9DE7900E04672 /* SimonsMemoryGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E848BD52AC9DE7900E04672 /* SimonsMemoryGame.swift */; };
 		5EC39D612AB6379B00BE2354 /* SimonsMemoryApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EC39D602AB6379B00BE2354 /* SimonsMemoryApp.swift */; };
 		5EC39D632AB6379B00BE2354 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EC39D622AB6379B00BE2354 /* ContentView.swift */; };
 		5EC39D652AB6379C00BE2354 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5EC39D642AB6379C00BE2354 /* Assets.xcassets */; };
 		5EC39D682AB6379C00BE2354 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5EC39D672AB6379C00BE2354 /* Preview Assets.xcassets */; };
-		5EC39D6F2AB6385F00BE2354 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EC39D6E2AB6385F00BE2354 /* GameScene.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5E848BD12AC9CD6C00E04672 /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
+		5E848BD32AC9D9D600E04672 /* SFSymbols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SFSymbols.swift; sourceTree = "<group>"; };
+		5E848BD52AC9DE7900E04672 /* SimonsMemoryGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimonsMemoryGame.swift; sourceTree = "<group>"; };
 		5EC39D5D2AB6379B00BE2354 /* SimonsMemory.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SimonsMemory.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5EC39D602AB6379B00BE2354 /* SimonsMemoryApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimonsMemoryApp.swift; sourceTree = "<group>"; };
 		5EC39D622AB6379B00BE2354 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		5EC39D642AB6379C00BE2354 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5EC39D672AB6379C00BE2354 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		5EC39D6E2AB6385F00BE2354 /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,7 +59,9 @@
 			children = (
 				5EC39D602AB6379B00BE2354 /* SimonsMemoryApp.swift */,
 				5EC39D622AB6379B00BE2354 /* ContentView.swift */,
-				5EC39D6E2AB6385F00BE2354 /* GameScene.swift */,
+				5E848BD32AC9D9D600E04672 /* SFSymbols.swift */,
+				5E848BD12AC9CD6C00E04672 /* Card.swift */,
+				5E848BD52AC9DE7900E04672 /* SimonsMemoryGame.swift */,
 				5EC39D642AB6379C00BE2354 /* Assets.xcassets */,
 				5EC39D662AB6379C00BE2354 /* Preview Content */,
 			);
@@ -140,9 +146,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5EC39D6F2AB6385F00BE2354 /* GameScene.swift in Sources */,
+				5E848BD62AC9DE7900E04672 /* SimonsMemoryGame.swift in Sources */,
 				5EC39D632AB6379B00BE2354 /* ContentView.swift in Sources */,
+				5E848BD42AC9D9D600E04672 /* SFSymbols.swift in Sources */,
 				5EC39D612AB6379B00BE2354 /* SimonsMemoryApp.swift in Sources */,
+				5E848BD22AC9CD6C00E04672 /* Card.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
