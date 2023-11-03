@@ -15,11 +15,11 @@ protocol SimonsMemoryGameDelegate {
     func game(_ game: SimonsMemoryGame, hideCards cards: [Card])
 }
 
-struct SimonsMemoryGame {
+class SimonsMemoryGame: ObservableObject {
     var delegate: SimonsMemoryGameDelegate?
-    var cards: [Card] = [Card]()
-    var cardsShown: [Card] = [Card]()
-    var isPlaying: Bool = false
+    @Published var cards: [Card] = [Card]()
+    @State var cardsShown: [Card] = [Card]()
+    @State var isPlaying: Bool = false
     
     func shuffleCards(cards: [Card]) -> [Card] {
         var randomCards = cards
@@ -27,20 +27,20 @@ struct SimonsMemoryGame {
         return randomCards
     }
     
-    mutating func newGame(newCards: [Card]) -> [Card] {
+    func newGame(newCards: [Card]) -> [Card] {
         cards = shuffleCards(cards: newCards)
         isPlaying = true
         
         return cards
     }
     
-    mutating func restartGame() {
+    func restartGame() {
         isPlaying = false
         cards.removeAll()
         cardsShown.removeAll()
     }
     
-    fileprivate mutating func endGame() {
+    fileprivate func endGame() {
         isPlaying = false
         delegate?.gameDidEnd(self)
     }
@@ -71,16 +71,17 @@ struct SimonsMemoryGame {
         return cardsShown.last
     }
     
-    mutating func didSelectCard(_ card: Card?) {
+    func didSelectCard(_ card: Card?) {
         guard let card = card else { return }
         
         if isFirsCardOfTurn() {
             let firstCard = firstCardOfTurn()!
             
             if card.isEqual(to: firstCard) {
+                print("Cards are equal")
                 cardsShown.append(card)
             } else {
-                let secondCard = cardsShown.removeLast()
+                let _ = cardsShown.removeLast()
             }
         } else {
             cardsShown.append(card)

@@ -7,15 +7,30 @@
 
 import SwiftUI
 
-struct Card {
+class Card: ObservableObject {
     var id: String = UUID().uuidString
     var icon: Image
     var color: Color
-    var shown: Bool = false
+    @Published var isShown: Bool = false
+    
+    init(card: Card) {
+        self.id = card.id
+        self.icon = card.icon
+        self.color = card.color
+        self.isShown = card.isShown
+    }
+    
+    init(icon: Image, color: Color) {
+        self.icon = icon
+        self.color = color
+    }
     
     
     func isEqual(to card: Card) -> Bool {
-        return self.id == card.id
+        let isCopy = self.id.contains(card.id)
+        let otherIsCopy = card.id.contains(self.id)
+        
+        return isCopy || otherIsCopy
     }
     
     func copy() -> Card {
@@ -24,10 +39,5 @@ struct Card {
 }
 
 extension Card {
-    init(card: Card) {
-        self.id = card.id
-        self.icon = card.icon
-        self.color = card.color
-        self.shown = card.shown
-    }
+    
 }

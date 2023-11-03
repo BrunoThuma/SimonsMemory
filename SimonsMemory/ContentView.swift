@@ -9,70 +9,70 @@ import SwiftUI
 import SpriteKit
 
 struct ContentView: View {
-    @State var game = SimonsMemoryGame()
-    @State var cards = [Card]()
+    let cardsService: CardService = SfSymbolsCardsService()
+    let cardsPairs: Int = 8
     
-    var fourColumnGrid = [
-        GridItem(.flexible()),
-        GridItem(.flexible()),
-        GridItem(.flexible()),
-        GridItem(.flexible()),
-    ]
+    @ObservedObject var game = SimonsMemoryGame()
+    @State var cards: [Card] = [Card]()
+    
+    var fourColumnGrid: [GridItem] {
+        Array(repeating: .init(.adaptive(minimum: 80)),
+              count: cardsPairs/2)
+    }
     
     var body: some View {
-        LazyVGrid(columns: fourColumnGrid) {
-            ForEach((0...4), id: \.self) {
-                Image(systemName: sfSymbols[$0])
-                    .font(
-                        .system(
-                            .largeTitle)
-                        .bold())
-                    .frame(width: 80,
-                           height: 80)
-                    .background(Color.cyan)
-                    .cornerRadius(10)
+        LazyVGrid(columns: fourColumnGrid, spacing: 10) {
+            ForEach(game.cards, id: \.self.id) { card in
+                CardCell(cardModel: card, didSelectCard: didSelectCard) {
+                    Text("SM")
+                }
             }
         }
-        .onAppear()
+        .onAppear( perform: setupNewGame )
     }
     
-    private func configureGame() {
-        
-        APIClient.shared.getCardImages { (cardsArray, error) in
-            if let _ = error {
-                // show alert
-            }
-            
-            self.cards = cardsArray!
-            self.setupNewGame()
-        }
-    }
-    
-    func setupNewGame() {
+    private func setupNewGame() {
+        fetchCards()
         cards = game.newGame(newCards: self.cards)
     }
     
-    func resetGame() {
+    private func resetGame() {
         game.restartGame()
         setupNewGame()
     }
+    
+    private func fetchCards() {
+        cardsService.fetchCards(numberOfUniqueCards: cardsPairs) { result in
+            switch result {
+            case .success(let cards):
+                self.cards = cards
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
+    }
+    
+    private func didSelectCard(card: Card) {
+        game.didSelectCard(card)
+    }
+    
 }
 
 extension ContentView: SimonsMemoryGameDelegate {
     func gameDidStart(_ game: SimonsMemoryGame) {
-        <#code#>
+        print("Salve")
     }
     
     func gameDidEnd(_ game: SimonsMemoryGame) {
-        <#code#>
+        print("Salve")
     }
     
     func game(_ game: SimonsMemoryGame, showCards cards: [Card]) {
-        <#code#>
+        print("Salve")
     }
     
     func game(_ game: SimonsMemoryGame, hideCards cards: [Card]) {
-        <#code#>
+        print("Salve")
     }
     
     
